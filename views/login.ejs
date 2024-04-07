@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url(https://github.com/abhiramkomaravolu/background-pic/blob/main/bcg%20img.jpg?raw=true);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .brand {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    h1, .brand {
+      color: white;
+      font-size: 28px;
+      margin: 10px 0 20px;
+      font-weight: bolder;
+    }
+    form {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    a {
+      color: #2196F3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #0d8bf2;
+      text-decoration: underline;
+    }
+    .box-cnts1 {
+      font-weight: bolder;
+    }
+    .box-cnts2 {
+      color: white;
+    }
+    .start {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">SMART WEARABLE</div>
+  </div>
+  <h1 class="brand">Login</h1>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+<% } %>
+  <form action="/login" method="post">
+    <label for="username" class="box-cnts1 start">Email:</label>
+    <input type="email" id="username" name="email"><br><br>
+    <label for="password" class="box-cnts1 start">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+    <button type="submit" class="box-cnts1 start">Login</button>
+  </form>
+  <p class="box-cnts1 box-cnts2">Don't have an account? <a href="/signup">Sign up</a></p>
+</body>
+</html>
