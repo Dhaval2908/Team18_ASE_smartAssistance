@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SMART WEARABLE - Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url(https://github.com/abhiramkomaravolu/background-pic/blob/main/bcg%20img.jpg?raw=true);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .brand {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .back-btn {
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      left: 20px;
+      transition: transform 0.3s ease;
+    }
+    .back-btn:hover {
+      transform: translateX(-5px);
+    }
+    h1 {
+      color: white;
+      font-size: 36px;
+      margin: 40px 0 20px;
+    }
+    form {
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: transparent;
+    }
+    input[type="text"], input[type="password"], input[type="number"] ,input[type="email"]{
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    button[type="submit"], button[type="button"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover, button[type="button"]:hover {
+      background-color: #45a049;
+    }
+    a {
+      color: #2196F3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #0d8bf2;
+      text-decoration: underline;
+    }
+    .box-cnts1 {
+      font-weight: bolder;
+    }
+    .box-cnts2 {
+      color: white;
+    }
+    .start {
+      color: white;
+    }
+    .disabled-button {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .error-message {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .checkbox-text {
+      color: white;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="back-btn" onclick="window.location.href='main.html'">&#8592;</div>
+    <div class="brand">SMART WEARABLE</div>
+  </div>
+  <h1>Sign Up</h1>
+  <% if (error) { %>
+    <p style="color: red;"><%= error %></p>
+<% } %>
+  <form action="/signup" method="post">
+    <div id="main-form">
+      <label for="health-consent" class="box-cnts1 start">Are you comfortable in providing your health parameters?</label>
+      <input type="checkbox" id="health-consent" name="health_consent">
+      <div class="checkbox-text">Tick the box to proceed further</div>
+      <button type="button" id="sure-btn" class="box-cnts1" disabled>Sure</button>
+      <button type="button" id="skip-btn" class="box-cnts1">Skip</button>
+      <br><br>
+      <div id="error-message" class="error-message" style="display: none;">Tick the box to proceed ahead</div>
+    </div>
+
+    <div id="detailed-form" style="display: none;">
+      <label for="name" class="box-cnts1 start">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="username" class="box-cnts1 start">Email:</label>
+      <input type="email" id="username" name="email"><br><br>
+      <label for="password" class="box-cnts1 start">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <label for="age" class="box-cnts1 start">Age:</label>
+      <input type="number" id="age" name="age"><br><br>
+      <label for="gender" class="box-cnts1 start">Gender:</label>
+      <input type="text" id="gender" name="gender" placeholder="Enter your gender"><br><br>
+      <label for="cholesterol" class="box-cnts1 start">Cholesterol Level:</label>
+      <input type="number" id="cholesterol" name="cholesterol"><br><br>
+      <label for="chest-pain" class="box-cnts1 start">Chest Pain Type:</label>
+      <select id="chest-pain" name="chest_pain">
+        <option value="typical-angina">Typical Angina</option>
+        <option value="asymptomatic">Asymptomatic</option>
+        <option value="atypical-angina">Atypical Angina</option>
+        <option value="non-anginal">Non-Anginal</option>
+      </select><br><br>
+      <button type="submit" class="box-cnts1">Sign Up</button>
+    </div>
+
+    <div id="basic-form" style="display: none;">
+      <label for="name" class="box-cnts1 start">Name:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="username" class="box-cnts1 start">Email:</label>
+      <input type="text" id="username" name="email"><br><br>
+      <label for="password" class="box-cnts1 start">Password:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <label for="age" class="box-cnts1 start">Age:</label>
+      <input type="number" id="age" name="age"><br><br>
+      <label for="gender" class="box-cnts1 start">Gender:</label>
+      <input type="text" id="gender" name="gender" placeholder="Enter your gender"><br><br>
+      <button type="submit" class="box-cnts1">Sign Up</button>
+    </div>
+
+  </form>
+  <p class="box-cnts1 box-cnts2">Already registered? <a href="/login">Login</a></p>
+
+  <script>
+    // Add your JavaScript code here to handle the form logic
+    document.getElementById('sure-btn').addEventListener('click', function() {
+      if (!document.getElementById('health-consent').checked) {
+        document.getElementById('error-message').style.display = 'block';
+      } else {
+        document.getElementById('main-form').style.display = 'none';
+        document.getElementById('detailed-form').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+      }
+    });
+
+    document.getElementById('skip-btn').addEventListener('click', function() {
+      document.getElementById('main-form').style.display = 'none';
+      document.getElementById('basic-form').style.display = 'block';
+    });
+
+    document.getElementById('health-consent').addEventListener('change', function() {
+      document.getElementById('sure-btn').classList.toggle('disabled-button', !this.checked);
+      document.getElementById('sure-btn').disabled = !this.checked;
+      document.getElementById('error-message').style.display = 'none';
+    });
+
+    
+  </script>
+</body>
+</html>

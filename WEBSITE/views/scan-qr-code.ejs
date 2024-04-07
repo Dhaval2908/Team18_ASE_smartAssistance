@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan QR Code</title>
+    <style>
+ body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative; /* Added for positioning the logout and profile buttons */
+    }
+    h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+    }
+    .logout-button, .home-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .logout-button {
+      right: 20px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+    }
+    .display{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+.card {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h1 {
+    margin-top: 0;
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="file"] {
+    display: none;
+    outline: none; /* Remove default outline */
+}
+
+
+label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #007bff; /* Add border to label */
+}
+
+label:hover {
+    background-color: #0056b3; /* Darken background on hover */
+    border-color: #0056b3; /* Darken border on hover */
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#qr-code-result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Wearable Health Monitoring</h1>
+        <button class="logout-button"><a href="/logout">Logout</a></button>
+       
+      </header>
+      <div class="display">
+        <div class="card">
+            <h1>Scan QR Code</h1>
+            <form id="upload-form" action="/scan-qr-code" method="post" enctype="multipart/form-data">
+                <label for="qrCodeImage">Select Image</label>
+                <input type="file" id="qrCodeImage" name="qrCodeImage" accept="image/*" capture="environment" required>
+                <button type="submit" id="submit-button">Upload and Scan</button>
+            </form>
+    
+            <div id="qr-code-result"></div>
+    
+            <div id="error-message">
+                <% if (errorMessage) { %>
+                    <p><%= errorMessage %></p>
+                <% } %>
+            </div>
+        </div>
+      </div>
+    
+
+    <!-- <script>
+        // Handle form submission
+        document.getElementById('upload-form').addEventListener('submit', (event) => {
+            // Prevent the form from submitting normally
+            event.preventDefault();
+
+            // Get the form data
+            const formData = new FormData(event.target);
+
+            // Send a POST request with the form data
+            fetch('/scan-qr-code', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('error-message').innerHTML = `<p>${data.error}</p>`;
+                } else {
+                    document.getElementById('error-message').innerHTML = '';
+                    document.getElementById('qr-code-result').innerHTML = `<h2>Decoded QR Code:</h2><p>${data.decodedText}</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error-message').innerHTML = '<p>An error occurred. Please try again.</p>';
+            });
+        });
+    </script> -->
+</body>
+</html>
